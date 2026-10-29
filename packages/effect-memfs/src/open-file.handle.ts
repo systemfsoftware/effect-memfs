@@ -316,9 +316,7 @@ const writeChunk = (self: OpenFile, pending: Uint8Array): Effect.Effect<WriteAll
         planWriteContinuation(new WriteAllChunk({ fd: self.fd, written: bytesWritten, remaining: pending.length })),
       ).pipe(
         Effect.mapError(writeZeroRefusal),
-        Effect.flatMap((decision) =>
-          advance(self, BigInt(writtenOf(decision, pending.length))).pipe(Effect.as(decision))
-        ),
+        Effect.tap((decision) => advance(self, BigInt(writtenOf(decision, pending.length)))),
       )
     ),
   )

@@ -3,8 +3,12 @@ import { Match, Schema } from 'effect'
 import * as Result from 'effect/Result'
 import { PlanSeekPosition, SeekMoved, SeekPositionDecision, SeekRefused } from './plan-seek-position.schema.js'
 
-class SeekBeforeStart extends Schema.TaggedClass<SeekBeforeStart>()('SeekBeforeStart', {}) {}
-class SeekWithinFile extends Schema.TaggedClass<SeekWithinFile>()('SeekWithinFile', {}) {}
+class SeekBeforeStart
+  extends Schema.TaggedClass<SeekBeforeStart, { readonly brand: unique symbol }>()('SeekBeforeStart', {})
+{}
+class SeekWithinFile
+  extends Schema.TaggedClass<SeekWithinFile, { readonly brand: unique symbol }>()('SeekWithinFile', {})
+{}
 
 type SeekStepOutcome = SeekBeforeStart | SeekWithinFile
 
