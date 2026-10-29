@@ -200,26 +200,13 @@ const writeFileArgsOf = (
   return withWriteFileMode(writeFileBaseArgs(options.flag), options.mode)
 }
 
-const withGlobExclude = (
-  args: { readonly cwd: string },
-  exclude: ReadonlyArray<string> | undefined,
-): { readonly cwd: string; readonly exclude?: Array<string> } => {
-  if (exclude === undefined) {
-    return args
-  }
-  return { ...args, exclude: [...exclude] }
-}
-
 const globRootOf = (cwd: string, root: string | undefined): string => root ?? cwd
 
-const globArgsOf = (
-  cwd: string,
-  options?: GlobOptions,
-): { readonly cwd: string; readonly exclude?: Array<string> } => {
+const globOptionsOf = (cwd: string, options?: GlobOptions): GlobOptions => {
   if (options === undefined) {
-    return { cwd }
+    return { root: cwd }
   }
-  return withGlobExclude({ cwd: globRootOf(cwd, options.root) }, options.exclude)
+  return { ...options, root: globRootOf(cwd, options.root) }
 }
 
 const truncateLengthOf = (length?: number): number => length ?? 0
@@ -399,12 +386,6 @@ export const fileSystem = (self: MemoryFileSystem): FileSystem.FileSystem => {
   const copyFile: FileSystem.FileSystem['copyFile'] = (fromPath, toPath) =>
     mutated('copyFile', () => nfs.copyFileSync(fromPath, toPath))
 
-  const glob: FileSystem.FileSystem['glob'] = (pattern, options) =>
-    Effect.tryPromise({
-      try: () => Array.fromAsync(nfs.promises.glob(pattern, globArgsOf(self.cwd, options))),
-      catch: failureOf('glob'),
-    }).pipe(Effect.map((matches) => matches.map(entryPathOf)))
-
   const link: FileSystem.FileSystem['link'] = (existingPath, newPath) =>
     mutated('link', () => nfs.linkSync(existingPath, newPath))
 
@@ -457,6 +438,11 @@ export const fileSystem = (self: MemoryFileSystem): FileSystem.FileSystem => {
       Effect.flatMap(infoFrom('stat record')),
     )
 
+  const lstat: FileSystem.FileSystem['lstat'] = (path) =>
+    Effect.tryPromise({ try: () => nfs.promises.lstat(path), catch: failureOf('lstat') }).pipe(
+      Effect.flatMap(infoFrom('stat record')),
+    )
+
   const open: FileSystem.FileSystem['open'] = (path, options) =>
     Effect.acquireRelease(
       Effect.tryPromise({
@@ -490,6 +476,18 @@ export const fileSystem = (self: MemoryFileSystem): FileSystem.FileSystem => {
       catch: failureOf('readDirectory'),
     })
 
+  const entryOf = <D = unknown>(value: D): Effect.Effect<FileSystem.DirectoryEntry, Error.PlatformError> =>
+    Effect.fromResult(OpenFile.direntOf(value)).pipe(
+      Effect.mapError(shapeFailure('directory entry')),
+      Effect.map((dirent) => ({ name: entryPathOf(dirent.name), type: OpenFile.kindOf(dirent) })),
+    )
+
+  const readDirectoryEntries: FileSystem.FileSystem['readDirectoryEntries'] = (path) =>
+    Effect.tryPromise({
+      try: () => nfs.promises.readdir(path, { withFileTypes: true }),
+      catch: failureOf('readDirectoryEntries'),
+    }).pipe(Effect.flatMap((entries) => Effect.forEach(entries, entryOf)))
+
   const realPath: FileSystem.FileSystem['realPath'] = (path) =>
     Effect.tryPromise({ try: () => nfs.promises.realpath(path), catch: failureOf('realPath') }).pipe(
       Effect.map(entryPathOf),
@@ -512,14 +510,14 @@ export const fileSystem = (self: MemoryFileSystem): FileSystem.FileSystem => {
 
   const watch: FileSystem.FileSystem['watch'] = (path, options) => Stream.unwrap(startWatch(self, path, options))
 
-  return FileSystem.make({
+  const base = FileSystem.make({
     access,
     chmod,
     chown,
     copy,
     copyFile,
-    glob,
     link,
+    lstat,
     makeDirectory,
     makeTempDirectory,
     makeTempDirectoryScoped,
@@ -528,6 +526,7 @@ export const fileSystem = (self: MemoryFileSystem): FileSystem.FileSystem => {
     open,
     readFile,
     readDirectory,
+    readDirectoryEntries,
     readLink,
     realPath,
     remove,
@@ -539,4 +538,9 @@ export const fileSystem = (self: MemoryFileSystem): FileSystem.FileSystem => {
     watch,
     writeFile,
   })
+
+  // The store has its own working directory; the derived glob would otherwise root relative patterns at the process's.
+  const glob: FileSystem.FileSystem['glob'] = (pattern, options) => base.glob(pattern, globOptionsOf(self.cwd, options))
+
+  return { ...base, glob }
 }

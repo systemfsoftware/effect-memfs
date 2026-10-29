@@ -8,7 +8,7 @@ Extracted from `systemfsoftware/systemfsoftware` (core); package history came wi
 
 | Package                         | Version | Distributed |
 | ------------------------------- | ------- | ----------- |
-| `@systemfsoftware/effect-memfs` | 6.0.3   | yes         |
+| `@systemfsoftware/effect-memfs` | 6.0.4   | yes         |
 
 ## Dependencies on core
 
