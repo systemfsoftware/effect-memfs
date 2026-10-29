@@ -6,13 +6,13 @@ const SeekPositionDecisionTypeId: unique symbol = Symbol.for(
 )
 type SeekPositionDecisionTypeId = typeof SeekPositionDecisionTypeId
 
-export class SeekMoved extends Schema.TaggedClass<SeekMoved>()('SeekMoved', {
+export class SeekMoved extends Schema.TaggedClass<SeekMoved, { readonly brand: unique symbol }>()('SeekMoved', {
   position: Schema.BigInt,
 }) {
   readonly [SeekPositionDecisionTypeId] = SeekPositionDecisionTypeId
 }
 
-export class SeekRefused extends Schema.TaggedClass<SeekRefused>()('SeekRefused', {
+export class SeekRefused extends Schema.TaggedClass<SeekRefused, { readonly brand: unique symbol }>()('SeekRefused', {
   position: Schema.BigInt,
 }) {
   readonly [SeekPositionDecisionTypeId] = SeekPositionDecisionTypeId
@@ -21,10 +21,12 @@ export class SeekRefused extends Schema.TaggedClass<SeekRefused>()('SeekRefused'
 export const SeekPositionDecision = Schema.Union([SeekMoved, SeekRefused])
 export type SeekPositionDecision = typeof SeekPositionDecision.Type
 
-export class PlanSeekPosition extends Schema.TaggedClass<PlanSeekPosition>()('PlanSeekPosition', {
-  position: Schema.BigInt,
-  offset: Schema.BigInt,
-  from: Schema.Literals(['start', 'current']),
-}) {
+export class PlanSeekPosition
+  extends Schema.TaggedClass<PlanSeekPosition, { readonly brand: unique symbol }>()('PlanSeekPosition', {
+    position: Schema.BigInt,
+    offset: Schema.BigInt,
+    from: Schema.Literals(['start', 'current']),
+  })
+{
   static readonly [Workflow.InstrumentationBrand] = {} as const
 }

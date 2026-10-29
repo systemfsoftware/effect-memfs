@@ -6,17 +6,21 @@ const WriteAllChunkDecisionTypeId: unique symbol = Symbol.for(
 )
 type WriteAllChunkDecisionTypeId = typeof WriteAllChunkDecisionTypeId
 
-export class WriteContinued extends Schema.TaggedClass<WriteContinued>()('WriteContinued', {
-  skip: Schema.Finite,
-}) {
+export class WriteContinued
+  extends Schema.TaggedClass<WriteContinued, { readonly brand: unique symbol }>()('WriteContinued', {
+    skip: Schema.Finite,
+  })
+{
   readonly [WriteAllChunkDecisionTypeId] = WriteAllChunkDecisionTypeId
 }
 
-export class WriteDrained extends Schema.TaggedClass<WriteDrained>()('WriteDrained', {}) {
+export class WriteDrained
+  extends Schema.TaggedClass<WriteDrained, { readonly brand: unique symbol }>()('WriteDrained', {})
+{
   readonly [WriteAllChunkDecisionTypeId] = WriteAllChunkDecisionTypeId
 }
 
-export class WriteZero extends Schema.TaggedError<WriteZero>()('WriteZero', {
+export class WriteZero extends Schema.TaggedError<WriteZero, { readonly brand: unique symbol }>()('WriteZero', {
   fd: Schema.Finite,
   message: Schema.String,
   cause: Schema.optional(Schema.Unknown),
@@ -27,10 +31,12 @@ export class WriteZero extends Schema.TaggedError<WriteZero>()('WriteZero', {
 export const WriteAllChunkDecision = Schema.Union([WriteContinued, WriteDrained])
 export type WriteAllChunkDecision = typeof WriteAllChunkDecision.Type
 
-export class WriteAllChunk extends Schema.TaggedClass<WriteAllChunk>()('WriteAllChunk', {
-  fd: Schema.Finite,
-  written: Schema.Finite,
-  remaining: Schema.Finite,
-}) {
+export class WriteAllChunk
+  extends Schema.TaggedClass<WriteAllChunk, { readonly brand: unique symbol }>()('WriteAllChunk', {
+    fd: Schema.Finite,
+    written: Schema.Finite,
+    remaining: Schema.Finite,
+  })
+{
   static readonly [Workflow.InstrumentationBrand] = {} as const
 }

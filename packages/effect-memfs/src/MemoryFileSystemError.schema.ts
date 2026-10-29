@@ -1,19 +1,23 @@
 import { Predicate, Schema } from 'effect'
 import * as Error from 'effect/PlatformError'
 
-export class ShapeRefusal extends Schema.TaggedError<ShapeRefusal>()('ShapeRefusal', {
-  method: Schema.String,
-  cause: Schema.optional(Schema.Unknown),
-}) {
+export class ShapeRefusal
+  extends Schema.TaggedError<ShapeRefusal, { readonly brand: unique symbol }>()('ShapeRefusal', {
+    method: Schema.String,
+    cause: Schema.optional(Schema.Unknown),
+  })
+{
   override get message(): string {
     return `The "${this.method}" call was given a value that is not a memory file system driver`
   }
 }
 
-export class CursorRefusal extends Schema.TaggedError<CursorRefusal>()('CursorRefusal', {
-  method: Schema.String,
-  cause: Schema.optional(Schema.Unknown),
-}) {
+export class CursorRefusal
+  extends Schema.TaggedError<CursorRefusal, { readonly brand: unique symbol }>()('CursorRefusal', {
+    method: Schema.String,
+    cause: Schema.optional(Schema.Unknown),
+  })
+{
   override get message(): string {
     return `The "${this.method}" call would move the cursor before the start of the file`
   }

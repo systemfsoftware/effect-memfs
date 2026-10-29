@@ -6,24 +6,28 @@ const TruncateCursorDecisionTypeId: unique symbol = Symbol.for(
 )
 type TruncateCursorDecisionTypeId = typeof TruncateCursorDecisionTypeId
 
-export class CursorKept extends Schema.TaggedClass<CursorKept>()('CursorKept', {
+export class CursorKept extends Schema.TaggedClass<CursorKept, { readonly brand: unique symbol }>()('CursorKept', {
   position: Schema.BigInt,
 }) {
   readonly [TruncateCursorDecisionTypeId] = TruncateCursorDecisionTypeId
 }
 
-export class CursorClamped extends Schema.TaggedClass<CursorClamped>()('CursorClamped', {
-  position: Schema.BigInt,
-}) {
+export class CursorClamped
+  extends Schema.TaggedClass<CursorClamped, { readonly brand: unique symbol }>()('CursorClamped', {
+    position: Schema.BigInt,
+  })
+{
   readonly [TruncateCursorDecisionTypeId] = TruncateCursorDecisionTypeId
 }
 
 export const TruncateCursorDecision = Schema.Union([CursorKept, CursorClamped])
 export type TruncateCursorDecision = typeof TruncateCursorDecision.Type
 
-export class PlanTruncateCursor extends Schema.TaggedClass<PlanTruncateCursor>()('PlanTruncateCursor', {
-  position: Schema.BigInt,
-  length: Schema.Int,
-}) {
+export class PlanTruncateCursor
+  extends Schema.TaggedClass<PlanTruncateCursor, { readonly brand: unique symbol }>()('PlanTruncateCursor', {
+    position: Schema.BigInt,
+    length: Schema.Int,
+  })
+{
   static readonly [Workflow.InstrumentationBrand] = {} as const
 }

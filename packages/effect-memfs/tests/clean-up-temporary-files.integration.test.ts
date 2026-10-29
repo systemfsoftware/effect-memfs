@@ -93,9 +93,9 @@ Feature('Handing back scratch space when the work using it is over')
           When('a piece of work borrows scratch space and then finishes')('outcome', (s) =>
             Effect.gen(function*() {
               const borrowed = yield* Effect.scoped(
-                Effect.flatMap(
+                Effect.tap(
                   Effect.flatMap(filesystem, row.borrow),
-                  (path) => Effect.as(s.fs.stat(path), path),
+                  (path) => s.fs.stat(path),
                 ),
               )
               return yield* Effect.flip(s.fs.stat(borrowed))
