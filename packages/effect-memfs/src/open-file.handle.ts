@@ -101,6 +101,27 @@ export const statOf = <S = unknown>(value: S): Result.Result<Stat, ShapeRefusal>
   return Result.fail(new ShapeRefusal({ method: 'stat', cause: value }))
 }
 
+export interface Dirent extends
+  Pick<
+    Stat,
+    'isFile' | 'isDirectory' | 'isSymbolicLink' | 'isBlockDevice' | 'isCharacterDevice' | 'isFIFO' | 'isSocket'
+  >
+{
+  readonly name: string
+}
+
+const hasNameProperty = (value: unknown): value is { readonly name: string } =>
+  Predicate.hasProperty(value, 'name') && typeof value.name === 'string'
+
+const isDirent = (value: unknown): value is Dirent => isStat(value) && hasNameProperty(value)
+
+export const direntOf = <D = unknown>(value: D): Result.Result<Dirent, ShapeRefusal> => {
+  if (isDirent(value)) {
+    return Result.succeed(value)
+  }
+  return Result.fail(new ShapeRefusal({ method: 'readDirectoryEntries', cause: value }))
+}
+
 export const driverOf = <H = unknown>(value: H): Result.Result<Driver, ShapeRefusal> => {
   if (isDriver(value)) {
     return Result.succeed(value)
@@ -145,7 +166,7 @@ const kindAssociations = (stat: StatKind): ReadonlyArray<readonly [boolean, File
   [stat.isSocket(), 'Socket'],
 ]
 
-const kindOf = (stat: StatKind): FileSystem.File.Type =>
+export const kindOf = (stat: StatKind): FileSystem.File.Type =>
   Option.match(Arr.findFirst(kindAssociations(stat), ([matches]) => matches), {
     onNone: () => 'Unknown',
     onSome: ([, type]) => type,
@@ -645,6 +666,24 @@ if (import.meta.vitest !== void 0) {
         onSuccess: () => answersDriver(answers),
       })
     },
+  )
+
+  const direntSubject = (drawn: ReadonlyArray<string>, nameless: boolean) => {
+    const record = recordAnswering(drawn)
+    return direntOf(nameless ? record : { ...record, name: 'entry' })
+  }
+
+  const answersDirent = (answers: ReadonlyArray<string>, nameless: boolean): boolean =>
+    !nameless && answersStat(answers)
+
+  it.prop(
+    '∀a_DirentAdmitted_≡AnswersFileAndDirectoryAndIsNamed',
+    { of: [Schema.Array(StatQuestion), Schema.Boolean], subject: direntSubject },
+    (subject, [drawn, nameless]) =>
+      Result.match(subject(drawn, nameless), {
+        onFailure: (refusal) => !answersDirent(drawn, nameless) && refusalNames('readDirectoryEntries')(refusal),
+        onSuccess: () => answersDirent(drawn, nameless),
+      }),
   )
 
   it.prop(
