@@ -273,12 +273,11 @@ const entryUnder = (directory: string, entry: string): string =>
   directory.endsWith('/') ? `${directory}${entry}` : `${directory}/${entry}`
 
 const existsUnder = (nfs: memfs.IFs, directory: string, entry: string): Effect.Effect<boolean> =>
-  Effect.match(
+  Effect.isSuccess(
     Effect.tryPromise({
       try: () => nfs.promises.stat(entryUnder(directory, entry)),
       catch: () => new ShapeRefusal({ method: 'watch' }),
     }),
-    { onFailure: () => false, onSuccess: () => true },
   )
 
 const decidedFrom = (entry: string, exists: boolean): FileSystem.WatchEvent =>
