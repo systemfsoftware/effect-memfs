@@ -1,6 +1,6 @@
 # @systemfsoftware/effect-memfs
 
-In-memory FileSystem for @effect/platform, forked from nounder/effect-memfs.
+In-memory FileSystem for @effect/platform.
 
 ## Install
 

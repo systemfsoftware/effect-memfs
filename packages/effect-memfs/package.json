@@ -1,7 +1,7 @@
 {
   "name": "@systemfsoftware/effect-memfs",
   "license": "Apache-2.0",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "author": "Ryan Lee <drdgvhbh@gmail.com>",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/systemfsoftware/effect-memfs/tree/main/packages/effect-memfs#readme",
   "bugs": "https://github.com/systemfsoftware/effect-memfs/issues",
-  "description": "In-memory FileSystem for @effect/platform, forked from nounder/effect-memfs.",
+  "description": "In-memory FileSystem for @effect/platform.",
   "keywords": [
     "effect",
     "filesystem",
