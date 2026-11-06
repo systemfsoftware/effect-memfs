@@ -1,6 +1,6 @@
 # effect-memfs
 
-In-memory FileSystem for @effect/platform, forked from nounder/effect-memfs.
+In-memory FileSystem for @effect/platform.
 
 Extracted from `systemfsoftware/systemfsoftware` (core); package history came with the move.
 
@@ -8,7 +8,7 @@ Extracted from `systemfsoftware/systemfsoftware` (core); package history came wi
 
 | Package                         | Version | Distributed |
 | ------------------------------- | ------- | ----------- |
-| `@systemfsoftware/effect-memfs` | 6.0.4   | yes         |
+| `@systemfsoftware/effect-memfs` | 6.0.5   | no          |
 
 ## Dependencies on core
 
