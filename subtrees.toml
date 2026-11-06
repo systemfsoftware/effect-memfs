@@ -1,0 +1,5 @@
+[[repos]]
+name = "constitution"
+url = "https://github.com/systemfsoftware/constitution"
+description = "Shared engineering laws for architecture and code quality"
+branch = "main"
