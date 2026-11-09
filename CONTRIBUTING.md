@@ -22,13 +22,15 @@ pnpm format
 pnpm check:local
 ```
 
-`pnpm check:local` reproduces the required CI static lane and tests: dprint, build, lint, typecheck, type tests,
-API reports, attw and the tests. It does not check commit messages; see below. Run it before pushing; the per-package commands above are for quick iteration only.
+`pnpm check:local` reproduces the required CI static lane and tests: dprint, build, lint, typecheck, API reports,
+attw and the tests (no package defines type tests yet, so that step runs nothing). It does not check commit messages; see below. Run it before pushing; the per-package commands above are for quick iteration only.
 
 Contributors modify the underlying TypeScript sources that define MemoryFileSystem, its Effect filesystem layer, and its watcher implementation.
 
 ## Pull-Request Guidance
 
 Contributors can propose changes by submitting pull requests against the systemfsoftware/effect-memfs repository.
-Commit messages follow Conventional Commits, `type(scope): subject`; commitlint (`commitlint.config.ts`) enforces
-this as a required merge-queue condition.
+Pull requests merge as one squash commit titled with the pull request's title, and Mergify requires that title to
+match `type(scope)!: subject` with type one of build, chore, ci, docs, feat, fix, perf, refactor, revert, style or
+test. Commitlint (`commitlint.config.ts`) also lints the pull request's commits and is a queue condition, but its
+type list is wider, so a title it accepts (`deps:`, `security:`) can still fail Mergify's check.

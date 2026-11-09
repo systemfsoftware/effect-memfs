@@ -7,7 +7,7 @@
             "type": "command",
             "command": "cd \"$CLAUDE_PROJECT_DIR\" && pnpm format >/dev/null || true",
             "async": true,
-            "timeout": 5
+            "timeout": 30
           }
         ]
       }
