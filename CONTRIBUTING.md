@@ -30,7 +30,9 @@ Contributors modify the underlying TypeScript sources that define MemoryFileSyst
 ## Pull-Request Guidance
 
 Contributors can propose changes by submitting pull requests against the systemfsoftware/effect-memfs repository.
-Pull requests merge as one squash commit titled with the pull request's title, and Mergify requires that title to
+A subtree pull request (one whose commits carry `git-subtree-dir:` and `git-subtree-split:` trailers) merges with a
+merge commit, so the trailers `git subtree pull` searches for reach main. Every other pull request merges as one
+squash commit titled with the pull request's title, and Mergify requires that title to
 match `type(scope)!: subject` with type one of build, chore, ci, docs, feat, fix, perf, refactor, revert, style or
 test. Commitlint (`commitlint.config.ts`) also lints the pull request's commits and is a queue condition, but its
 type list is wider, so a title it accepts (`deps:`, `security:`) can still fail Mergify's check.
