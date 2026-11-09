@@ -18,7 +18,12 @@ pnpm install
 pnpm --filter @systemfsoftware/effect-memfs lint
 pnpm --filter @systemfsoftware/effect-memfs typecheck
 pnpm --filter @systemfsoftware/effect-memfs build
+pnpm format
+pnpm check:local
 ```
+
+`pnpm check:local` runs what the required CI checks run: dprint, build, lint, typecheck, type tests, API reports,
+attw and the tests. Run it before pushing; the per-package commands above are for quick iteration only.
 
 Contributors modify the underlying TypeScript sources that define MemoryFileSystem, its Effect filesystem layer, and its watcher implementation.
 
