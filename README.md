@@ -50,6 +50,8 @@ The MemoryFileSystem blueprint provides an Effect filesystem layer and a watcher
 
 [API reference](packages/effect-memfs/etc/effect-memfs.api.md) · [Source](packages/effect-memfs/src/MemoryFileSystem/mod.ts) · [CONTRIBUTING.md](CONTRIBUTING.md)
 
+Source setup runs on `x86_64-linux` and `aarch64-linux` with Nix flakes and GNU coreutils; the flake has no outputs for macOS or BSD.
+
 ## License
 
 Apache-2.0: [LICENSE](LICENSE).

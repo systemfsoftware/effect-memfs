@@ -4,7 +4,9 @@ This guide is intended for developers modifying the source code of systemfsoftwa
 
 ## Prerequisites
 
+- A supported system: the flake builds only on `x86_64-linux` and `aarch64-linux`; the setup below fails on macOS and BSD.
 - Nix with flakes
+- GNU coreutils: the setup command uses `cp -L --no-preserve=mode`
 - Node.js 24
 - pnpm 12.9.0
 
