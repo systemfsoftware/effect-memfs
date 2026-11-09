@@ -23,6 +23,10 @@ queue_rules:
       # claim without trailers matches no queue and cannot merge at all.
       - "-commits[*].commit_message ~= (?m)^git-subtree-dir: \\S+$"
       - "-title ~= (?i)\\b(add|pull|update|sync|vendor|refresh|import)\\b[^.]*\\bsubtrees?\\b|\\bsubtrees?\\b[^.]*(\\badd\\b|\\bpull\\b|\\bupdate\\b|\\bsync\\b|\\bvendor\\b|\\brefresh\\b|\\bimport\\b)"
+      # A hand edit inside a vendored prefix must come through a subtree pull, never a squash.
+      # Removals stay exempt so a prefix can be dropped.
+      - "-added-files ~= ^repos/constitution/"
+      - "-modified-files ~= ^repos/constitution/"
       - check-success = no merge conflicts
       - check-success = build · lint · typecheck · test / static checks (pnpm check:static)
       - or:
