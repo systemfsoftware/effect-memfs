@@ -8,7 +8,10 @@ Extracted from `systemfsoftware/systemfsoftware` (core); package history came wi
 
 | Package                         | Version | Distributed |
 | ------------------------------- | ------- | ----------- |
-| `@systemfsoftware/effect-memfs` | 6.0.5   | no          |
+| `@systemfsoftware/effect-memfs` | 6.0.5   | yes (npm)   |
+
+`repos/constitution/` is a vendored, read-only subtree: never edit it by hand; it changes only through
+`git subtree pull --squash -P repos/constitution` (see CONTRIBUTING.md).
 
 ## Dependencies on core
 
@@ -18,7 +21,7 @@ Core packages are not installed from a registry. `flake.nix` pins core at a full
 name ordinary semver ranges. To take newer core packages: bump the `core` input, update the override versions,
 rebuild `.sfs-deps`, run `pnpm install`.
 
-Local setup:
+Local setup (x86_64-linux or aarch64-linux only; the flake declares no other systems):
 
 ```bash
 mkdir -p .sfs-deps && cp -L --no-preserve=mode "$(nix build --no-link --print-out-paths .#sfs-deps)"/*.tgz .sfs-deps/

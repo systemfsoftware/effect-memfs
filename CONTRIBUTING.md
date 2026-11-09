@@ -30,9 +30,16 @@ Contributors modify the underlying TypeScript sources that define MemoryFileSyst
 ## Pull-Request Guidance
 
 Contributors can propose changes by submitting pull requests against the systemfsoftware/effect-memfs repository.
-A subtree pull request (one whose commits carry `git-subtree-dir:` and `git-subtree-split:` trailers) merges with a
-merge commit, so the trailers `git subtree pull` searches for reach main. Every other pull request merges as one
-squash commit titled with the pull request's title, and Mergify requires that title to
-match `type(scope)!: subject` with type one of build, chore, ci, docs, feat, fix, perf, refactor, revert, style or
-test. Commitlint (`commitlint.config.ts`) also lints the pull request's commits and is a queue condition, but its
+How a pull request merges depends on what it touches:
+
+- One whose commits carry both `git-subtree-dir:` and `git-subtree-split: <40-hex sha>` trailers merges with a
+  merge commit, so the trailers `git subtree pull` searches for reach main.
+- One without those trailers that adds or modifies files under `repos/constitution/`, or whose title pairs add, pull,
+  update, sync, vendor, refresh or import with "subtree", matches no Mergify queue and cannot merge. Change the
+  vendored tree only with `git subtree pull`; removals are exempt.
+- Every other pull request merges as one squash commit titled with the pull request's title. Mergify requires that
+  title to read `type: subject`, optionally `type(scope):` and `!`, with type one of build, chore, ci, docs, feat,
+  fix, perf, refactor, revert, style or test.
+
+Commitlint (`commitlint.config.ts`) also lints the pull request's commits and is a queue condition, but its
 type list is wider, so a title it accepts (`deps:`, `security:`) can still fail Mergify's check.
