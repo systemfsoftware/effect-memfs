@@ -18,6 +18,7 @@
     "pnpm-lock.yaml",
     "**/etc/*.api.md",
     ".sfs-deps/**",
+    "repos/**",
     "**/snapshots/*.md"
   ],
   "plugins": [
