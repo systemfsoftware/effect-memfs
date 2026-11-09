@@ -22,11 +22,13 @@ pnpm format
 pnpm check:local
 ```
 
-`pnpm check:local` runs what the required CI checks run: dprint, build, lint, typecheck, type tests, API reports,
-attw and the tests. Run it before pushing; the per-package commands above are for quick iteration only.
+`pnpm check:local` reproduces the required CI static lane and tests: dprint, build, lint, typecheck, type tests,
+API reports, attw and the tests. It does not check commit messages; see below. Run it before pushing; the per-package commands above are for quick iteration only.
 
 Contributors modify the underlying TypeScript sources that define MemoryFileSystem, its Effect filesystem layer, and its watcher implementation.
 
 ## Pull-Request Guidance
 
 Contributors can propose changes by submitting pull requests against the systemfsoftware/effect-memfs repository.
+Commit messages follow Conventional Commits, `type(scope): subject`; commitlint (`commitlint.config.ts`) enforces
+this as a required merge-queue condition.
