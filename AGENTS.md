@@ -1,6 +1,6 @@
 # effect-memfs
 
-In-memory FileSystem for @effect/platform, forked from nounder/effect-memfs.
+In-memory FileSystem for @effect/platform.
 
 Extracted from `systemfsoftware/systemfsoftware` (core); package history came with the move.
 
@@ -8,7 +8,10 @@ Extracted from `systemfsoftware/systemfsoftware` (core); package history came wi
 
 | Package                         | Version | Distributed |
 | ------------------------------- | ------- | ----------- |
-| `@systemfsoftware/effect-memfs` | 6.0.4   | yes         |
+| `@systemfsoftware/effect-memfs` | 6.0.5   | yes (npm)   |
+
+`repos/constitution/` is a vendored, read-only subtree: never edit it by hand; it changes only through
+`git subtree pull --squash -P repos/constitution` (see CONTRIBUTING.md).
 
 ## Dependencies on core
 
@@ -18,7 +21,7 @@ Core packages are not installed from a registry. `flake.nix` pins core at a full
 name ordinary semver ranges. To take newer core packages: bump the `core` input, update the override versions,
 rebuild `.sfs-deps`, run `pnpm install`.
 
-Local setup:
+Local setup (x86_64-linux or aarch64-linux only; the flake declares no other systems):
 
 ```bash
 mkdir -p .sfs-deps && cp -L --no-preserve=mode "$(nix build --no-link --print-out-paths .#sfs-deps)"/*.tgz .sfs-deps/
@@ -32,6 +35,8 @@ pnpm install
 - CI (`.github/workflows/ci.yml`) calls core's reusable checks at a pinned core commit. A pull request (and a
   merge-queue draft) runs the static lane and the affected tests (`.github/ci/pr-tests.mjs`: `turbo --affected`,
   `vitest --changed`) and no packed test job; main runs every package's whole suite at the per-change profile. `nix.yml` builds the flake outputs on main only.
+- The Stop hook in `.claude/settings.json` runs `pnpm format` best-effort: it is silent on failure and times out
+  after 30 s, so `pnpm check:local` (not the hook) is what proves the tree is formatted.
 - Never start a local mutation run; mutation runs in CI only.
 - Version bumps: every change to a publishable package's packed output advances its version at least a patch.
 

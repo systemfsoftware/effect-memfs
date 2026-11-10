@@ -1,5 +1,5 @@
 {
-  description = "In-memory FileSystem for @effect/platform, forked from nounder/effect-memfs.";
+  description = "In-memory FileSystem for @effect/platform.";
 
   inputs = {
     # Core at a full commit. Core is public, so no fetch token is needed. Moving this pin is how the
