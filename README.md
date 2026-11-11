@@ -6,15 +6,11 @@ The repository systemfsoftware/effect-memfs provides an in-memory Effect filesys
 
 [`@systemfsoftware/effect-memfs`](packages/effect-memfs/README.md)
 
-Within the source repository, the package version is designated as 6.0.5. As of 2026-11-06, the latest observed version on the public registry was 6.0.0, and the registry endpoint for version 6.0.5 returned an HTTP 404 status.
+The package version in the source repository is 6.0.5. https://nix.systemfsoftware.com is the package registry for `@systemfsoftware` packages: a producer pushes its package tarballs there from `main`, a consumer substitutes them through its flake inputs, and nothing is published to npm.
 
 ## Installation
 
-To consume this package, developers can resolve @systemfsoftware/effect-memfs through their project's package manager.
-
-```sh
-pnpm add @systemfsoftware/effect-memfs@6.0.0 effect@4.1.0 typescript@7.0.2
-```
+Consume this package through its flake input, which substitutes its tarballs from the registry; see the repository's AGENTS.md.
 
 ## Example
 
