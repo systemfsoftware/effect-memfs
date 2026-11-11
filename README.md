@@ -1,22 +1,70 @@
 # effect-memfs
 
-The repository systemfsoftware/effect-memfs provides an in-memory Effect filesystem.
+An in-memory `FileSystem` for Effect. Seed it with paths and contents, and any code that asks Effect for the `FileSystem` service reads and writes that map instead of the disk.
 
-## Package Navigation
+## Install
 
-[`@systemfsoftware/effect-memfs`](packages/effect-memfs/README.md)
+`@systemfsoftware` packages are distributed as Nix tarballs from `nix.systemfsoftware.com`, not from npm, so do not run `npm install` or `pnpm add` for them. Take them through a flake. Third-party peers such as `effect` install from npm as usual.
 
-The package version in the source repository is 6.0.5. https://nix.systemfsoftware.com is the package registry for `@systemfsoftware` packages: a producer pushes its package tarballs there from `main`, a consumer substitutes them through its flake inputs, and nothing is published to npm.
+Add the producer as a flake input in your project's `flake.nix`. Pin it to a full commit SHA or a release tag:
 
-## Installation
+```nix
+{
+  nixConfig = {
+    extra-substituters = "https://nix.systemfsoftware.com";
+    extra-trusted-public-keys = "nix-cache-1:wXA8I4DayNW9q6enUyQA/P/nT38pGSTLt374t3gsn7M=";
+    fallback = true;
+  };
 
-Consume this package through its flake input, which substitutes its tarballs from the registry; see the repository's AGENTS.md.
+  inputs = {
+    nixpkgs.follows = "effect-memfs/nixpkgs";
+    effect-memfs.url = "github:systemfsoftware/effect-memfs/<rev>";
+    pnpm-release-management.url = "github:systemfsoftware/pnpm-release-management";
+  };
+
+  outputs = { self, nixpkgs, effect-memfs, pnpm-release-management }: {
+    packages = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system:
+      let pkgs = nixpkgs.legacyPackages.${system}; in rec {
+        producer-tarballs = pnpm-release-management.lib.mkProducerTarballs {
+          inherit pkgs;
+          producers = { inherit effect-memfs; };
+        };
+        pnpm-store = pnpm-release-management.lib.mkPnpmConsumerStore {
+          inherit pkgs;
+          src = self;
+          files.".deps" = producer-tarballs;
+        };
+      });
+
+    devShells = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system:
+      let pkgs = nixpkgs.legacyPackages.${system}; in {
+        default = pkgs.mkShell {
+          packages = [ pkgs.nodejs_24 pkgs.pnpm_12 ];
+          shellHook = self.packages.${system}.producer-tarballs.shellHook;
+        };
+      });
+  };
+}
+```
+
+Then, inside `nix develop`:
+
+```sh
+nix eval --raw .#producer-tarballs.overrides   # paste the output into pnpm-workspace.yaml
+pnpm add effect
+```
+
+Declare the package in `package.json` as a tarball in `.deps/`:
+
+```json
+"@systemfsoftware/effect-memfs": "file:.deps/effect-memfs.tgz"
+```
+
+Add `.deps/` to `.gitignore`.
 
 ## Example
 
-To integrate the in-memory filesystem, developers configure their application to use MemoryFileSystem.
-
-`example.mjs`:
+`MemoryFileSystem.make` takes the initial contents. Its `layer` provides Effect's `FileSystem` service:
 
 ```js
 import { MemoryFileSystem } from '@systemfsoftware/effect-memfs'
@@ -32,21 +80,22 @@ const program = Effect.gen(function*() {
 console.log(await Effect.runPromise(program))
 ```
 
-```sh
-pnpm exec node example.mjs
-```
-
 ```text
 milk, bread
 ```
 
-## Supported Usage and Documentation Links
+## API
 
-The MemoryFileSystem blueprint provides an Effect filesystem layer and a watcher.
+- `MemoryFileSystem.make(contents?)` builds a blueprint with the root at `/`. `contents` maps paths to file contents; a path's parent directories are created from it.
+- `.layer` provides `FileSystem.FileSystem` and a `Watcher` service.
+- `.effect` provides the `FileSystem` service as an Effect.
+- `.withContents(...)` and `.withCwd(...)` return a revised blueprint.
 
-[API reference](packages/effect-memfs/etc/effect-memfs.api.md) · [Source](packages/effect-memfs/src/MemoryFileSystem/mod.ts) · [CONTRIBUTING.md](CONTRIBUTING.md)
+The [API report](packages/effect-memfs/etc/effect-memfs.api.md) lists every export, and the [module source](packages/effect-memfs/src/MemoryFileSystem/mod.ts) shows the implementation.
 
-Source setup runs on `x86_64-linux` and `aarch64-linux` with Nix flakes and GNU coreutils; the flake has no outputs for macOS or BSD.
+## Contributing
+
+Development setup and checks are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
