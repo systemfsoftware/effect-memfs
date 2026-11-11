@@ -6,14 +6,13 @@ This guide is intended for developers modifying the source code of systemfsoftwa
 
 - A supported system: the flake builds only on `x86_64-linux` and `aarch64-linux`; the setup below fails on macOS and BSD.
 - Nix with flakes
-- GNU coreutils: the setup command uses `cp -L --no-preserve=mode`
 - Node.js 24
 - pnpm 12.9.0
 
 ## Setup and Workflow
 
 ```sh
-mkdir -p .sfs-deps && cp -L --no-preserve=mode "$(nix build --no-link --print-out-paths .#sfs-deps)"/*.tgz .sfs-deps/
+nix develop
 pnpm install
 pnpm --filter @systemfsoftware/effect-memfs lint
 pnpm --filter @systemfsoftware/effect-memfs typecheck

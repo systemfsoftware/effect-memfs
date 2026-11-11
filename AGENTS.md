@@ -6,25 +6,26 @@ Extracted from `systemfsoftware/systemfsoftware` (core); package history came wi
 
 ## Packages
 
-| Package                         | Version | Distributed |
-| ------------------------------- | ------- | ----------- |
-| `@systemfsoftware/effect-memfs` | 6.0.5   | yes (npm)   |
+| Package                         | Version | Distributed    |
+| ------------------------------- | ------- | -------------- |
+| `@systemfsoftware/effect-memfs` | 6.0.5   | yes (registry) |
 
 `repos/constitution/` is a vendored, read-only subtree: never edit it by hand; it changes only through
 `git subtree pull --squash -P repos/constitution` (see CONTRIBUTING.md).
 
 ## Dependencies on core
 
-Core packages are not installed from a registry. `flake.nix` pins core at a full commit (input `core`) and
-`nix build .#sfs-deps` links the core tarballs this lockfile names. `pnpm-workspace.yaml` maps every core package
-(and its transitive core closure) to `file:.sfs-deps/<name>-<version>.tgz` through `overrides`; the moved manifests
-name ordinary semver ranges. To take newer core packages: bump the `core` input, update the override versions,
-rebuild `.sfs-deps`, run `pnpm install`.
+https://nix.systemfsoftware.com is the package registry for `@systemfsoftware` packages: a producer pushes its package tarballs there from `main`, a consumer substitutes them through its flake inputs, and nothing is published to npm.
+
+`flake.nix` pins core at a full commit (input `core`) and `lib.mkProducerTarballs` lays core's tarballs under
+`.deps/`. `pnpm-workspace.yaml` maps each core package to `file:.deps/<name>.tgz` through `overrides`; the
+moved manifests name ordinary semver ranges. To take newer core packages: bump the `core` input, regenerate the
+overrides with `nix eval --raw .#producer-tarballs.overrides`, then run `pnpm update '@systemfsoftware/*'`.
 
 Local setup (x86_64-linux or aarch64-linux only; the flake declares no other systems):
 
 ```bash
-mkdir -p .sfs-deps && cp -L --no-preserve=mode "$(nix build --no-link --print-out-paths .#sfs-deps)"/*.tgz .sfs-deps/
+nix develop
 pnpm install
 ```
 
