@@ -173,6 +173,9 @@ catalogs:
     '@types/node':
       specifier: ^26.6.5
       version: 26.6.6
+    '@vitest/coverage-v8':
+      specifier: ^5.0.5
+      version: 5.1.0
     effect:
       specifier: ^4.1.2
       version: 4.1.4
@@ -300,22 +303,22 @@ importers:
         version: file:.deps/conformance-spec.tgz(effect@4.1.4)
       '@systemfsoftware/differential-spec':
         specifier: file:../../.deps/differential-spec.tgz
-        version: file:.deps/differential-spec.tgz(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: file:.deps/differential-spec.tgz(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)
       '@systemfsoftware/effect-gherkin-spec':
         specifier: file:../../.deps/effect-gherkin-spec.tgz
-        version: file:.deps/effect-gherkin-spec.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: file:.deps/effect-gherkin-spec.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0))(effect@4.1.4)(vitest@5.1.0)
       '@systemfsoftware/effect-schema-law':
         specifier: file:../../.deps/effect-schema-law.tgz
-        version: file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0)
       '@systemfsoftware/effect-schema-vite':
         specifier: file:../../.deps/effect-schema-vite.tgz
-        version: file:.deps/effect-schema-vite.tgz(@systemfsoftware/effect-schema-law@file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))(effect@4.1.4)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: file:.deps/effect-schema-vite.tgz(@systemfsoftware/effect-schema-law@file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0))(effect@4.1.4)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0)
       '@systemfsoftware/oxlint-config-recommended':
         specifier: file:../../.deps/oxlint-config-recommended.tgz
         version: file:.deps/oxlint-config-recommended.tgz(effect@4.1.4)(oxlint-tsgolint@7.0.2005)(oxlint@1.90.0(oxlint-tsgolint@7.0.2005))(typescript@7.0.2)
       '@systemfsoftware/stryker-config':
         specifier: file:../../.deps/stryker-config.tgz
-        version: file:.deps/stryker-config.tgz(@systemfsoftware/stryker-js@17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))
+        version: file:.deps/stryker-config.tgz(@systemfsoftware/stryker-js@17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0))
       '@systemfsoftware/stryker-ignorer-effect-schema-declarations':
         specifier: catalog:stryker
         version: 0.2.0(rolldown@1.3.0)
@@ -324,13 +327,13 @@ importers:
         version: 0.1.1(rolldown@1.3.0)
       '@systemfsoftware/stryker-js':
         specifier: catalog:stryker
-        version: 17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: 17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0)
       '@systemfsoftware/stryker-js-typescript-checker':
         specifier: catalog:stryker
         version: 8.2.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.9.1)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(rolldown@1.3.0)(supports-color@8.1.1)
       '@systemfsoftware/stryker-js-vitest-runner':
         specifier: catalog:stryker
-        version: 8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.9.1)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: 8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.9.1)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0)
       '@systemfsoftware/tsconfig':
         specifier: file:../../.deps/tsconfig.tgz
         version: file:.deps/tsconfig.tgz
@@ -339,13 +342,16 @@ importers:
         version: file:.deps/tsdown-config.tgz(@microsoft/api-extractor@7.60.1(@types/node@26.6.6))(tsdown@0.23.7(typescript@7.0.2))
       '@systemfsoftware/vitest':
         specifier: file:../../.deps/vitest.tgz
-        version: file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)
       '@systemfsoftware/vitest-config':
         specifier: file:../../.deps/vitest-config.tgz
-        version: file:.deps/vitest-config.tgz(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+        version: file:.deps/vitest-config.tgz(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 5.1.0(vitest@5.1.0)
       effect:
         specifier: 'catalog:'
         version: 4.1.4
@@ -366,7 +372,7 @@ importers:
         version: 7.0.2
       vitest:
         specifier: 'catalog:'
-        version: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+        version: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
 
 packages:
 
@@ -374,9 +380,26 @@ packages:
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/helper-string-parser@7.29.13':
+    resolution: {integrity: sha512-fWegr+WsEsiMVW4KUNdIIzzMTZSzNiqhy0//6+2MRi2d5NFNsL/AYwBQW8eBnRbTBVRnDVzjaJEUqKaCWjMMdQ==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/helper-validator-identifier@7.29.7':
     resolution: {integrity: sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==}
     engines: {node: '>=6.9.0'}
+
+  '@babel/parser@7.29.13':
+    resolution: {integrity: sha512-fJM50YYjlTiBhgdkGmC1tBpv+FMAyo4annf2X6Aks+0yRlaiVkYW/3f07xAfVVkYIoZ9fFZp+mEThUFnuybhkQ==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  '@babel/types@7.29.11':
+    resolution: {integrity: sha512-WCsemW40Cpc6gouC1SrY6PBaZ+oLRlEVY9XBvZBI7il/HyUrb2nJ505wE1MHEFyDZNnrWDEuy4jL50WVHfTTSQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@bcoe/v8-coverage@1.0.2':
+    resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
+    engines: {node: '>=18'}
 
   '@commitlint/cli@21.2.4':
     resolution: {integrity: sha512-g3M/wrQdElqGH5vROIeL2QiYIxrzqUkhCgsDyDlWfKEyQdCt10OyMB28W2cJtpZ+VNGMvmaN923infr1hOfyrg==}
@@ -1910,7 +1933,7 @@ packages:
       effect: ^4.1.2
 
   '@systemfsoftware/effect-gherkin-spec@file:.deps/effect-gherkin-spec.tgz':
-    resolution: {integrity: sha512-gvRH04QLyjGduAM4Epnsrf9MpftkzE/faTYBRElNz3yBWN/xe/jXhPhz8FS4sAtL6fZ+hQrJPkqyKwvV1nxr1g==, tarball: file:.deps/effect-gherkin-spec.tgz}
+    resolution: {integrity: sha512-h9k+nkzlZQo1lzkFaQ0GsZLBOkGg6o7jDyO8T980j+HBYb4ricPgicedCNpyHL8qG40OjL2l3cMUR5LhBpxBCA==, tarball: file:.deps/effect-gherkin-spec.tgz}
     version: 8.1.3
     peerDependencies:
       '@systemfsoftware/vitest': ^4.1.0
@@ -1947,13 +1970,13 @@ packages:
       vitest: ^5.0.5
 
   '@systemfsoftware/effect-sim-kernel@file:.deps/effect-sim-kernel.tgz':
-    resolution: {integrity: sha512-8TjAc8QUR+Q7s/ild/l2ILKgkrB3axw/WSrUlMPYW+os0p/QAKpGj1YmBm5oYOyoPmC8nDIpM//0PouF7+yEwQ==, tarball: file:.deps/effect-sim-kernel.tgz}
+    resolution: {integrity: sha512-LBrGJ9Qy/XNz14M23y33M58hU7wbPdbOXKNN4MR94TAwLr8Mn1D/j9Tv9GAfNyEjWIHyf6lvqdAVCbKxEtB0DA==, tarball: file:.deps/effect-sim-kernel.tgz}
     version: 2.0.4
     peerDependencies:
       effect: ^4.1.2
 
   '@systemfsoftware/effect-spec-runtime@file:.deps/effect-spec-runtime.tgz':
-    resolution: {integrity: sha512-rM18Y9e5pOUuBNZXor4V4oBK2YCJLjT0uz918a15sOEv4hg2mhtODD766Dhrz9OTStz8QREZoZPrxH7nSEPAvw==, tarball: file:.deps/effect-spec-runtime.tgz}
+    resolution: {integrity: sha512-ZMkPVOYszsecRHdH/7H7S0c3pPSQivx9Sr+qXc32qmlAG+ohsCIlj4eXLEEO2VDau2DsN6+o3F0n2/IwrCiqlw==, tarball: file:.deps/effect-spec-runtime.tgz}
     version: 1.1.4
     peerDependencies:
       '@systemfsoftware/vitest': ^4.1.0
@@ -2110,7 +2133,7 @@ packages:
       vitest: ^5.0.5
 
   '@systemfsoftware/vitest@file:.deps/vitest.tgz':
-    resolution: {integrity: sha512-AHZuax4a3Cto44/l3eaWjhHO2nN8q4lVf4tlnYnibnuDLz9x2CK7YKUVc4GzXn+/x5iTZPIX4Gx3HFOqqNeyzg==, tarball: file:.deps/vitest.tgz}
+    resolution: {integrity: sha512-UyEn3RO39MLkZb5pidABJS7HMSwaibDjHvXhR1esu/SnSiLlCZ4upjcWvwb2u88kBrIzDI7AMG/quurjIlvrIA==, tarball: file:.deps/vitest.tgz}
     version: 4.1.0
     peerDependencies:
       effect: ^4.1.2
@@ -2287,6 +2310,23 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@vitest/coverage-v8@5.1.0':
+    resolution: {integrity: sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA==}
+    peerDependencies:
+      '@vitest/browser': 5.1.0
+      vitest: 5.1.0
+    peerDependenciesMeta:
+      '@vitest/browser':
+        optional: true
+
+  '@vitest/istanbul-lib-coverage@2.1.0':
+    resolution: {integrity: sha512-WOjuS+xcjSIy7ruYBQ+9BUcV7XZQ0FyVcbWbWxW9TRx/kLGx5SQaeFRIFDJxjNplb6YsT7SpKo2zuXXUo91OIQ==}
+    engines: {node: '>=22'}
+
+  '@vitest/istanbul-lib-report@2.1.0':
+    resolution: {integrity: sha512-+ZFta25nWtGCOBG9/IET8w1RO5Oawsd6H8Uf6AJ9EA/StFuKVtKAEJEJ6uRt84OH+T4YkI0ASmIHAhRA+0KVxw==}
+    engines: {node: '>=22'}
+
   '@vitest/mocker@5.1.0':
     resolution: {integrity: sha512-5umB9/jlWcqVS6fsrFmv5Gdnpu6wAUio/lEOwAmvB7v+lFo/IW2B9FhAD0p19GCULTgMzLCdUmuCDCnAzWgppQ==}
     peerDependencies:
@@ -2382,6 +2422,9 @@ packages:
   assertion-error@2.0.1:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
+
+  ast-v8-to-istanbul@1.0.8:
+    resolution: {integrity: sha512-lPdpagk13ANXV+HClJEpCZM7kUsl5XcvgqKzZhaj6Ve1ZFICcY2sGhAN1n1vT0tML6EclT7bfVgTxqL57Gkpow==}
 
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
@@ -2701,6 +2744,9 @@ packages:
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
 
+  js-tokens@10.0.0:
+    resolution: {integrity: sha512-lM/UBzQmfJRo9ABXbPWemivdCW8V2G8FHaHdypQaIy523snUjog0W71ayWXTjiR+ixeMyVHN2XcpnTd/liPg/Q==}
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -2815,6 +2861,9 @@ packages:
 
   magic-string@1.4.5:
     resolution: {integrity: sha512-oLLC2+YvQUfAa+vxoufE/yc1icb87M9iXIRqAoR/2EhE/8cb3SF/+Gi0c2By1B+5Vz2e2vQtUvHiu1+63Znh+w==}
+
+  magicast@0.5.5:
+    resolution: {integrity: sha512-UicdXN8zQ3JHlxVq+28afMXPr1z7WNY6+7EJnzTdQWkTAlMLF5fNCCKxJHBQwGaNGR11581EiQmQzx73+MvszA==}
 
   memfs@4.80.0:
     resolution: {integrity: sha512-N70W2isi44XdGn7uPo9NJ4zRukcdkwSFHlnYx42SWOH/+hzqNc8P7+tVoA2up4z7faHvNi1RSNCFjxoYQ71VPQ==}
@@ -3176,6 +3225,10 @@ packages:
   tinyps@0.5.2:
     resolution: {integrity: sha512-sYhvdbpuo2rGE7u/jPUMiZz4H2LCaOodUtRD9ot4DLNFQbr884g9zozoJnxLI+1r4hXqWkmdHUl8Yig2Rllxxw==}
 
+  tinyrainbow@3.2.0:
+    resolution: {integrity: sha512-LgO3D9yZJjApUiuUfl9iFAwrtaX4+lok3wJIqttGoKCHlWUqHqbQpnxCf82L8FjgKsh4iGo78hqJwgL8F6To2A==}
+    engines: {node: '>=14.0.0'}
+
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -3431,7 +3484,20 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
+  '@babel/helper-string-parser@7.29.13': {}
+
   '@babel/helper-validator-identifier@7.29.7': {}
+
+  '@babel/parser@7.29.13':
+    dependencies:
+      '@babel/types': 7.29.11
+
+  '@babel/types@7.29.11':
+    dependencies:
+      '@babel/helper-string-parser': 7.29.13
+      '@babel/helper-validator-identifier': 7.29.7
+
+  '@bcoe/v8-coverage@1.0.2': {}
 
   '@commitlint/cli@21.2.4(conventional-commits-parser@7.1.4)(typescript@7.0.2)':
     dependencies:
@@ -4947,11 +5013,11 @@ snapshots:
       '@systemfsoftware/effect-sim-kernel': file:.deps/effect-sim-kernel.tgz(effect@4.1.4)
       effect: 4.1.4
 
-  '@systemfsoftware/differential-spec@file:.deps/differential-spec.tgz(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/differential-spec@file:.deps/differential-spec.tgz(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)':
     dependencies:
       '@systemfsoftware/effect-cell-types': file:.deps/effect-cell-types.tgz(effect@4.1.4)
       '@systemfsoftware/effect-sim-kernel': file:.deps/effect-sim-kernel.tgz(effect@4.1.4)
-      '@systemfsoftware/vitest': file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+      '@systemfsoftware/vitest': file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)
       effect: 4.1.4
       fast-check: 4.10.2
     transitivePeerDependencies:
@@ -4964,24 +5030,24 @@ snapshots:
     dependencies:
       effect: 4.1.4
 
-  '@systemfsoftware/effect-gherkin-spec@file:.deps/effect-gherkin-spec.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/effect-gherkin-spec@file:.deps/effect-gherkin-spec.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0))(effect@4.1.4)(vitest@5.1.0)':
     dependencies:
-      '@systemfsoftware/effect-spec-runtime': file:.deps/effect-spec-runtime.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
-      '@systemfsoftware/vitest': file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+      '@systemfsoftware/effect-spec-runtime': file:.deps/effect-spec-runtime.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0))(effect@4.1.4)(vitest@5.1.0)
+      '@systemfsoftware/vitest': file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)
       effect: 4.1.4
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
 
   '@systemfsoftware/effect-schema-discovery@file:.deps/effect-schema-discovery.tgz':
     dependencies:
       '@oxc-project/types': 0.155.0
       oxc-parser: 0.155.0
 
-  '@systemfsoftware/effect-schema-law@file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/effect-schema-law@file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0)':
     dependencies:
       effect: 4.1.4
       fast-check: 4.10.2
     optionalDependencies:
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
 
   '@systemfsoftware/effect-schema-recursion-budget@file:.deps/effect-schema-recursion-budget.tgz(effect@4.1.4)':
     dependencies:
@@ -4989,27 +5055,27 @@ snapshots:
       effect: 4.1.4
       oxc-parser: 0.155.0
 
-  '@systemfsoftware/effect-schema-vite@file:.deps/effect-schema-vite.tgz(@systemfsoftware/effect-schema-law@file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))(effect@4.1.4)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/effect-schema-vite@file:.deps/effect-schema-vite.tgz(@systemfsoftware/effect-schema-law@file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0))(effect@4.1.4)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0)':
     dependencies:
       '@oxc-project/types': 0.155.0
       '@systemfsoftware/effect-schema-discovery': file:.deps/effect-schema-discovery.tgz
-      '@systemfsoftware/effect-schema-law': file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+      '@systemfsoftware/effect-schema-law': file:.deps/effect-schema-law.tgz(effect@4.1.4)(vitest@5.1.0)
       '@systemfsoftware/effect-schema-recursion-budget': file:.deps/effect-schema-recursion-budget.tgz(effect@4.1.4)
       effect: 4.1.4
       oxc-parser: 0.155.0
       vite: 8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
 
   '@systemfsoftware/effect-sim-kernel@file:.deps/effect-sim-kernel.tgz(effect@4.1.4)':
     dependencies:
       effect: 4.1.4
 
-  '@systemfsoftware/effect-spec-runtime@file:.deps/effect-spec-runtime.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))(effect@4.1.4)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/effect-spec-runtime@file:.deps/effect-spec-runtime.tgz(@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0))(effect@4.1.4)(vitest@5.1.0)':
     dependencies:
       '@systemfsoftware/effect-sim-kernel': file:.deps/effect-sim-kernel.tgz(effect@4.1.4)
-      '@systemfsoftware/vitest': file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+      '@systemfsoftware/vitest': file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)
       effect: 4.1.4
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
 
   '@systemfsoftware/oxlint-config-cell-architecture@file:.deps/oxlint-config-cell-architecture.tgz(effect@4.1.4)(oxlint@1.90.0(oxlint-tsgolint@7.0.2005))(typescript@7.0.2)':
     dependencies:
@@ -5099,9 +5165,9 @@ snapshots:
       oxc-parser: 0.155.0
       typescript: 7.0.2
 
-  '@systemfsoftware/stryker-config@file:.deps/stryker-config.tgz(@systemfsoftware/stryker-js@17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))))':
+  '@systemfsoftware/stryker-config@file:.deps/stryker-config.tgz(@systemfsoftware/stryker-js@17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0))':
     optionalDependencies:
-      '@systemfsoftware/stryker-js': 17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))
+      '@systemfsoftware/stryker-js': 17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0)
 
   '@systemfsoftware/stryker-framework-interface@0.0.0':
     dependencies:
@@ -5190,14 +5256,14 @@ snapshots:
       - rolldown
       - supports-color
 
-  '@systemfsoftware/stryker-js-vitest-runner@8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.10.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/stryker-js-vitest-runner@8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.10.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0)':
     dependencies:
       '@effect/opentelemetry': 4.1.4(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.10.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-base@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)
       '@opentelemetry/exporter-trace-otlp-http': 0.222.0(@opentelemetry/api@1.10.0)
       '@opentelemetry/sdk-node': 0.222.0(@opentelemetry/api@1.10.0)(supports-color@8.1.1)
       '@opentelemetry/sdk-trace-base': 2.12.0(@opentelemetry/api@1.10.0)
       '@systemfsoftware/effect-cell-types': file:.deps/effect-cell-types.tgz(effect@4.1.4)
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - '@opentelemetry/api-logs'
@@ -5210,14 +5276,14 @@ snapshots:
       - effect
       - supports-color
 
-  '@systemfsoftware/stryker-js-vitest-runner@8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.9.1)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/stryker-js-vitest-runner@8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.9.1)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0)':
     dependencies:
       '@effect/opentelemetry': 4.1.4(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.9.1)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-base@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)
       '@opentelemetry/exporter-trace-otlp-http': 0.222.0(@opentelemetry/api@1.9.1)
       '@opentelemetry/sdk-node': 0.222.0(@opentelemetry/api@1.9.1)(supports-color@8.1.1)
       '@opentelemetry/sdk-trace-base': 2.12.0(@opentelemetry/api@1.9.1)
       '@systemfsoftware/effect-cell-types': file:.deps/effect-cell-types.tgz(effect@4.1.4)
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - '@opentelemetry/api-logs'
@@ -5230,7 +5296,7 @@ snapshots:
       - effect
       - supports-color
 
-  '@systemfsoftware/stryker-js@17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/stryker-js@17.0.2(@opentelemetry/api-logs@0.222.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(supports-color@8.1.1)(vitest@5.1.0)':
     dependencies:
       '@effect/opentelemetry': 4.1.4(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.10.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-base@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)
       '@effect/platform-node': 4.1.4(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))
@@ -5242,7 +5308,7 @@ snapshots:
       '@opentelemetry/sdk-metrics': 2.12.0(@opentelemetry/api@1.10.0)
       '@opentelemetry/sdk-trace-base': 2.12.0(@opentelemetry/api@1.10.0)
       '@systemfsoftware/effect-cell-types': file:.deps/effect-cell-types.tgz(effect@4.1.4)
-      '@systemfsoftware/stryker-js-vm-runner': '@systemfsoftware/stryker-js-vitest-runner@8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.10.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))'
+      '@systemfsoftware/stryker-js-vm-runner': '@systemfsoftware/stryker-js-vitest-runner@8.1.1(@opentelemetry/api-logs@0.222.0)(@opentelemetry/api@1.10.0)(@opentelemetry/resources@2.12.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-logs@0.222.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-metrics@2.12.0(@opentelemetry/api@1.10.0))(@opentelemetry/sdk-trace-node@2.11.0(@opentelemetry/api@1.9.1))(@opentelemetry/semantic-conventions@1.45.0)(effect@4.1.4)(supports-color@8.1.1)(vitest@5.1.0)'
       effect: 4.1.4
     transitivePeerDependencies:
       - '@opentelemetry/api-logs'
@@ -5264,16 +5330,16 @@ snapshots:
       '@microsoft/api-extractor': 7.60.1(@types/node@26.6.6)
       tsdown: 0.23.7(typescript@7.0.2)
 
-  '@systemfsoftware/vitest-config@file:.deps/vitest-config.tgz(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/vitest-config@file:.deps/vitest-config.tgz(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))(vitest@5.1.0)':
     dependencies:
       vite: 8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
 
-  '@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)))':
+  '@systemfsoftware/vitest@file:.deps/vitest.tgz(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))(vitest@5.1.0)':
     dependencies:
       '@effect/platform-node': 4.1.4(effect@4.1.4)(redis@6.3.1(@opentelemetry/api@1.9.1))
       effect: 4.1.4
-      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
     transitivePeerDependencies:
       - bufferutil
       - redis
@@ -5381,6 +5447,24 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
+  '@vitest/coverage-v8@5.1.0(vitest@5.1.0)':
+    dependencies:
+      '@bcoe/v8-coverage': 1.0.2
+      '@vitest/istanbul-lib-coverage': 2.1.0
+      '@vitest/istanbul-lib-report': 2.1.0
+      ast-v8-to-istanbul: 1.0.8
+      magicast: 0.5.5
+      obug: 3.0.0
+      std-env: 4.3.0
+      tinyrainbow: 3.2.0
+      vitest: 5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+
+  '@vitest/istanbul-lib-coverage@2.1.0': {}
+
+  '@vitest/istanbul-lib-report@2.1.0':
+    dependencies:
+      '@vitest/istanbul-lib-coverage': 2.1.0
+
   '@vitest/mocker@5.1.0(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
@@ -5455,6 +5539,12 @@ snapshots:
   argue-cli@3.2.0: {}
 
   assertion-error@2.0.1: {}
+
+  ast-v8-to-istanbul@1.0.8:
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      estree-walker: 3.0.3
+      js-tokens: 10.0.0
 
   balanced-match@4.0.4: {}
 
@@ -5707,6 +5797,8 @@ snapshots:
 
   jju@1.4.0: {}
 
+  js-tokens@10.0.0: {}
+
   js-tokens@4.0.0: {}
 
   js-yaml@4.3.2:
@@ -5787,6 +5879,12 @@ snapshots:
   magic-string@1.4.5:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
+
+  magicast@0.5.5:
+    dependencies:
+      '@babel/parser': 7.29.13
+      '@babel/types': 7.29.11
+      source-map-js: 1.2.2
 
   memfs@4.80.0:
     dependencies:
@@ -6212,6 +6310,8 @@ snapshots:
 
   tinyps@0.5.2: {}
 
+  tinyrainbow@3.2.0: {}
+
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
@@ -6312,7 +6412,7 @@ snapshots:
       jiti: 2.7.0
       yaml: 2.9.1
 
-  vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)):
+  vitest@5.1.0(@opentelemetry/api@1.9.1)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)):
     dependencies:
       '@types/chai': 5.2.3
       '@vitest/mocker': 5.1.0(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
@@ -6331,6 +6431,7 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.1
       '@types/node': 26.6.6
+      '@vitest/coverage-v8': 5.1.0(vitest@5.1.0)
     transitivePeerDependencies:
       - msw
 

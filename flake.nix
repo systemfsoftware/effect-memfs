@@ -10,7 +10,7 @@
   inputs = {
     # Core at a full commit, whose push workflow put its tarballs in nix.systemfsoftware.com. Moving this pin
     # is how the repository takes newer core packages: bump it, then run pnpm update '@systemfsoftware/*'.
-    core.url = "github:systemfsoftware/systemfsoftware/3ef6c21c36f19a539078b6817b495df3039cc163";
+    core.url = "github:systemfsoftware/systemfsoftware/06ffbc5d0e96421d0745f81477fd6eaa815798e2";
     nixpkgs.follows = "core/nixpkgs";
     pnpm-release-management.url = "github:systemfsoftware/pnpm-release-management";
   };
