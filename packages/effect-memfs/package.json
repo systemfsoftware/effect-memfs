@@ -68,6 +68,7 @@
     "@systemfsoftware/vitest": "^3.0.0",
     "@systemfsoftware/vitest-config": "^0.1.1",
     "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "effect": "catalog:",
     "fast-check": "catalog:",
     "oxlint": "catalog:oxlint",
