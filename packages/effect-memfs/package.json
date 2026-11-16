@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@systemfsoftware/effect-cell-types": "^12.1.4",
-    "memfs": "^4.80.0"
+    "memfs": "^4.80.1"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
