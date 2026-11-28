@@ -10,7 +10,7 @@
     # Core at a full commit, for its dprint build and its nixpkgs.
     core.url = "github:systemfsoftware/systemfsoftware/06ffbc5d0e96421d0745f81477fd6eaa815798e2";
     nixpkgs.follows = "core/nixpkgs";
-    pnpm-release-management.url = "github:systemfsoftware/pnpm-release-management";
+    pnpm-release-management.url = "github:systemfsoftware/pnpm-release-management/3da32f4fa6f01af0a9a0cdab5cc8eb5d134b2de3";
   };
 
   outputs = { self, nixpkgs, core, pnpm-release-management }:
