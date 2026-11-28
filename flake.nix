@@ -7,13 +7,13 @@
   };
 
   inputs = {
-    # Core at a full commit, for its dprint build and its nixpkgs.
     core.url = "github:systemfsoftware/systemfsoftware/06ffbc5d0e96421d0745f81477fd6eaa815798e2";
     nixpkgs.follows = "core/nixpkgs";
     pnpm-release-management.url = "github:systemfsoftware/pnpm-release-management/3da32f4fa6f01af0a9a0cdab5cc8eb5d134b2de3";
+    dprint.url = "github:systemfsoftware/dprint";
   };
 
-  outputs = { self, nixpkgs, core, pnpm-release-management }:
+  outputs = { self, nixpkgs, core, pnpm-release-management, dprint }:
     let
       lib = nixpkgs.lib;
       systems = [ "x86_64-linux" "aarch64-linux" ];
@@ -29,21 +29,16 @@
         };
     in
     {
-      packages = forEachSystem (pkgs:
-        let system = pkgs.stdenv.hostPlatform.system; in
-        workspaceOf pkgs // {
-          inherit (core.packages.${system}) dprint;
-        });
+      packages = forEachSystem workspaceOf;
 
-      devShells = forEachSystem (pkgs:
-        let system = pkgs.stdenv.hostPlatform.system; in {
-          default = pkgs.mkShell {
-            packages = [
-              core.packages.${system}.dprint
-              pkgs.nodejs_24
-              pkgs.pnpm_12
-            ];
-          };
-        });
+      devShells = forEachSystem (pkgs: {
+        default = pkgs.mkShell {
+          packages = [
+            dprint.packages.${pkgs.stdenv.hostPlatform.system}.default
+            pkgs.nodejs_24
+            pkgs.pnpm_12
+          ];
+        };
+      });
     };
 }
